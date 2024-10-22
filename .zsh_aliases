@@ -40,3 +40,20 @@ alias lf="lfub"
 alias magit="nvim -c MagitOnly"
 alias vw="vim -c ':VimwikiIndex'"
 alias history="history 1"
+
+# WSL Drasl
+if [[ "$(uname | grep -E "[Mm]icrosoft")" ]]; then
+  alias gbs="gulp clean;gulp bundle --ship; gulp package-solution --ship"
+  alias gs="gulp serve"
+  alias e="explorer.exe ."
+  alias c="code ."
+  alias hw="sudo hwclock -s; date" # lagar klukkuna
+
+  function wcode() {
+      local windows_path=$(readlink -f .)
+      local linux_path=$(pwd)
+      cd $windows_path
+      cmd.exe /C code .
+      cd $linux_path
+  }
+fi

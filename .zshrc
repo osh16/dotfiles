@@ -5,6 +5,14 @@ export TERM="screen-256color"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
+# wsl drasl
+if [[ "$(uname | grep -E "[Mm]icrosoft")" ]]; then
+  export DISPLAY="$(awk '/nameserver/ { print $2 }' < /etc/resolv.conf)":0
+  export LIBGL_ALWAYS_INDIRECT=1
+  export PROMPT="[%F{yellow}%n%f@%F{yellow}%m%f: %~]%# "
+  export BROWSER=/usr/bin/wslview
+fi
+
 setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
 setopt interactive_comments
