@@ -2,8 +2,8 @@ return {
   {
     "vimwiki/vimwiki",
     event = "BufEnter *.md",
-    keys = { 
-      "<leader>ww"
+    keys = {
+      "<leader>ww",
     },
     init = function()
       vim.g.vimwiki_list = {

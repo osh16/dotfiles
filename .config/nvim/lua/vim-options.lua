@@ -34,6 +34,8 @@ vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
 vim.keymap.set("n", "J", "5j")
 vim.keymap.set("n", "K", "5k")
+vim.keymap.set("v", "J", "5j")
+vim.keymap.set("v", "K", "5k")
 
 -- Islenskt
 vim.keymap.set("n", ";", ":")

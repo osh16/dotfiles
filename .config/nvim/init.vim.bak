@@ -1,0 +1,56 @@
+let mapleader=" "
+
+colorscheme torte
+syntax on
+set nocompatible
+
+set clipboard+=unnamedplus
+
+filetype plugin on
+filetype indent on
+
+" search options 
+set ignorecase
+set smartcase
+set hlsearch
+
+" indentation options
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set smarttab
+
+" backspace over indent, line breaks, and start of insert action
+set backspace=indent,eol,start
+
+" enable mouse
+set mouse=a
+
+" enable line numbers
+set relativenumber
+
+" show current position
+set ruler
+
+" show matching brackets
+set showmatch 
+
+" islenska
+nnoremap ; :
+nnoremap æ :
+nnoremap Æ :
+nnoremap þ /
+nnoremap j gj
+nnoremap k gk
+nnoremap J 5j
+nnoremap K 5k
+
+" WSL yank support
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+    augroup END
+endif
+

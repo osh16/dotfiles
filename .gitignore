@@ -2,6 +2,10 @@
 !.config/
 !.config/nvim/
 !.config/nvim/*
+!.config/nvim/lua/
+!.config/nvim/lua/*
+!.config/nvim/lua/plugins/
+!.config/nvim/lua/plugins/*
 !.gitignore
 !.inputrc
 !.zsh_aliases

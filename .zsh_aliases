@@ -42,7 +42,7 @@ alias vw="vim -c ':VimwikiIndex'"
 alias history="history 1"
 
 # WSL Drasl
-if [[ "$(uname | grep -E "[Mm]icrosoft")" ]]; then
+if [[ "$(uname -a | grep -E "[Mm]icrosoft")" ]]; then
   alias gbs="gulp clean;gulp bundle --ship; gulp package-solution --ship"
   alias gs="gulp serve"
   alias e="explorer.exe ."
