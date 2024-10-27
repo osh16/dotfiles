@@ -40,6 +40,9 @@ return {
 			lspconfig.yamlls.setup({
 				capabilities = capabilities,
 			})
+			lspconfig.csharp_ls.setup({
+				capabilities = capabilities,
+			})
 
 			vim.keymap.set("n", "<leader>K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
