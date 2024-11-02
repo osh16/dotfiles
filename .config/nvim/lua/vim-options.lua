@@ -1,20 +1,20 @@
 local options = {
-	swapfile = false,
-	clipboard = "unnamedplus",
-	number = true,
-	relativenumber = true,
+  swapfile = false,
+  clipboard = "unnamedplus",
+  number = true,
+  relativenumber = true,
   smartindent = true,
-	expandtab = true,
-	tabstop = 2,
-	softtabstop = 2,
-	shiftwidth = 2,
-	ignorecase = true,
-	encoding = "utf-8",
-	termguicolors = true,
+  expandtab = true,
+  tabstop = 2,
+  softtabstop = 2,
+  shiftwidth = 2,
+  ignorecase = true,
+  encoding = "utf-8",
+  termguicolors = true,
 }
 
 for k, v in pairs(options) do
-	vim.opt[k] = v
+  vim.opt[k] = v
 end
 
 vim.g.mapleader = " "
@@ -45,8 +45,8 @@ vim.keymap.set("n", "Æ", ":")
 vim.keymap.set("n", "þ", "/")
 
 -- Tabs
-vim.keymap.set("n", "<leader>tn", ":tabnew<cr>")
-vim.keymap.set("n", "<leader>tc", ":tabclose<cr>")
+vim.keymap.set("n", "<leader>tn", ":tabnew<cr>", { desc = "new tab" })
+vim.keymap.set("n", "<leader>tc", ":tabclose<cr>", { desc = "close tab" })
 
 -- Search and replace
 vim.keymap.set("n", "S", ":%s//g<Left><Left>")
