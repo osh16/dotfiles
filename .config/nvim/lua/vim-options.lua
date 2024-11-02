@@ -55,3 +55,4 @@ vim.keymap.set("n", "S", ":%s//g<Left><Left>")
 vim.keymap.set("n", "q:", "<nop>")
 
 vim.wo.number = true
+
