@@ -11,3 +11,6 @@
 !.zsh_aliases
 !.zshrc
 !.tmux_conf
+!.local/
+!.local/bin/
+!.local/bin/*
