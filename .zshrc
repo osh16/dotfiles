@@ -1,44 +1,18 @@
 autoload -U colors && colors	# Load colors
 PS1="%B[%{$fg[yellow]%}%n@%{$fg[yellow]%}%M %{$reset_color%}%~%B]%{$reset_color%}$%b "
 
-export TERM="screen-256color"
+export TERM="tmux-256color"
 export EDITOR="nvim"
 export VISUAL="nvim"
 
 # Start the tmux session if not alraedy in the tmux session
 if [[ ! -n $TMUX  ]]; then
-  # Get the session IDs
-  session_ids="$(tmux list-sessions)"
-
-  # Create new session if no sessions exist
-  if [[ -z "$session_ids" ]]; then
-    tmux new-session
-  fi
-
-  # Select from following choices
-  #   - Attach existing session
-  #   - Create new session
-  #   - Start without tmux
-  create_new_session="Create new session"
-  start_without_tmux="Start without tmux"
-  choices="$session_ids\n${create_new_session}:\n${start_without_tmux}:"
-  choice="$(echo $choices | fzf | cut -d: -f1)"
-
-  if expr "$choice" : "[0-9]*$" >&/dev/null; then
-    # Attach existing session
-    tmux attach-session -t "$choice"
-  elif [[ "$choice" = "${create_new_session}" ]]; then
-    # Create new session
-    tmux new-session
-  elif [[ "$choice" = "${start_without_tmux}" ]]; then
-    # Start without tmux
-    :
-  fi
+  "$HOME/.local/bin/tmux-launcher.sh"
 fi
 
-# wsl drasl
+# WSL drasl
 if [[ "$(uname | grep -E "[Mm]icrosoft")" ]]; then
-  export DISPLAY="$(awk '/nameserver/ { print $2 }' < /etc/resolv.conf)":0
+  export DISPLAY="$(awk '/nameserver/ { print $2 }' < /etc/resolv.conf)"
   export LIBGL_ALWAYS_INDIRECT=1
   export PROMPT="[%F{yellow}%n%f@%F{yellow}%m%f: %~]%# "
   export BROWSER=/usr/bin/wslview
