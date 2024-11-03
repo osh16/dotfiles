@@ -1,7 +1,7 @@
 autoload -U colors && colors	# Load colors
 PS1="%B[%{$fg[yellow]%}%n@%{$fg[yellow]%}%M %{$reset_color%}%~%B]%{$reset_color%}$%b "
 
-export TERM="tmux-256color"
+export TERM="xterm-256color"
 export EDITOR="nvim"
 export VISUAL="nvim"
 

@@ -39,6 +39,7 @@ alias ref="source ~/.zsh_aliases;source ~/.zshrc;tmux source ~/.tmux.conf"
 alias cvw="cd ~/.local/share/nvim/vimwiki"
 alias gbs="gulp clean;gulp bundle --ship; gulp package-solution --ship"
 alias gs="gulp serve"
+alias tmux="tmux -2"
 
 
 # WSL Drasl
