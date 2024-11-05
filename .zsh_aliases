@@ -40,6 +40,7 @@ alias cvw="cd ~/.local/share/nvim/vimwiki"
 alias gbs="gulp clean;gulp bundle --ship; gulp package-solution --ship"
 alias gs="gulp serve"
 alias tmux="tmux -2"
+alias fd="fdfind"
 
 
 # WSL Drasl
