@@ -38,10 +38,11 @@ alias history="history 1"
 alias ref="source ~/.zsh_aliases;source ~/.zshrc;tmux source ~/.tmux.conf"
 alias cvw="cd ~/.local/share/nvim/vimwiki"
 alias gbs="gulp clean;gulp bundle --ship; gulp package-solution --ship"
-alias gs="gulp serve"
+alias gs="npm run serve || gulp serve --max-old-space=8192 --nobrowser"
 alias tmux="tmux -2"
 alias fd="fdfind"
 alias acs="sudo apt-cache search"
+alias dr="dotnet run"
 
 
 # WSL Drasl

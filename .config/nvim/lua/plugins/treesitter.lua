@@ -7,7 +7,7 @@ return {
 			config.setup({
 				auto_install = true,
 				highlight = { enable = true },
-				indent = { enable = true },
+				--indent = { enable = true },
 			})
 			local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 			treesitter_parser_config.powershell = {

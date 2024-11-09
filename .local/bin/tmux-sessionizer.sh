@@ -9,6 +9,7 @@ else
     selected=$(find ~/code ~/work ~/ /home/ -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
+
 if [[ -z $selected ]]; then
     exit 0
 fi
