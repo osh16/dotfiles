@@ -26,6 +26,9 @@ return {
 		build = "make tiktoken", -- Only on MacOS or Linux
 		opts = {
 			debug = true,
+      window = {
+        width = 0.3,
+      },
 		},
 		config = {
 			mappings = {
@@ -35,6 +38,8 @@ return {
 				},
 			},
 		},
+
+    vim.keymap.set("n", "<leader>cct", ":CopilotChatToggle<CR>", {desc = "Copilot toggle"}),
 		vim.keymap.set("n", "<leader>ccq", function()
       local input = vim.fn.input("Quick Chat: ")
       if input ~= "" then

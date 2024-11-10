@@ -6,6 +6,7 @@ return {
     config = function()
       local harpoon = require("harpoon");
       local conf = require("telescope.config").values
+      local themes = require("telescope.themes")
       harpoon.setup()
 
       local function toggle_telescope(harpoon_files)
@@ -14,12 +15,16 @@ return {
               table.insert(file_paths, item.value)
           end
 
-          require("telescope.pickers").new({}, {
+          require("telescope.pickers").new(themes.get_dropdown({
+            layout_config = {
+              prompt_position = "top",
+            }
+          }), {
               prompt_title = "Harpoon",
               finder = require("telescope.finders").new_table({
                   results = file_paths,
               }),
-              previewer = conf.file_previewer({}),
+              -- previewer = conf.file_previewer({}),
               sorter = conf.generic_sorter({}),
           }):find()
       end
@@ -30,5 +35,4 @@ return {
       vim.keymap.set("n", "<C-P>", function() harpoon:list():prev() end, {desc = "Prev harpoon file"})
     end
 	},
-
 }
