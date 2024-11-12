@@ -11,7 +11,7 @@ if [[ ! -n $TMUX  ]]; then
 fi
 
 # WSL drasl
-if [[ "$(uname | grep -E "[Mm]icrosoft")" ]]; then
+if [[ "$(uname -a | grep -E "[Mm]icrosoft")" ]]; then
   export DISPLAY="$(awk '/nameserver/ { print $2 }' < /etc/resolv.conf)"
   export LIBGL_ALWAYS_INDIRECT=1
   export PROMPT="[%F{yellow}%n%f@%F{yellow}%m%f: %~]%# "
