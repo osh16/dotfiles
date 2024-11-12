@@ -6,6 +6,8 @@
 !.config/nvim/lua/*
 !.config/nvim/lua/plugins/
 !.config/nvim/lua/plugins/*
+!.config/powershell/
+!.config/powershell/*
 !.gitignore
 !.inputrc
 !.zsh_aliases
