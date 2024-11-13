@@ -43,6 +43,7 @@ alias tmux="tmux -2"
 alias fd="fdfind"
 alias acs="sudo apt-cache search"
 alias dr="dotnet run"
+alias tid="~/.local/bin/get-tenant-id.sh"
 
 
 # WSL Drasl
