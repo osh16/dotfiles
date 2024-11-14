@@ -45,6 +45,13 @@ alias acs="sudo apt-cache search"
 alias dr="dotnet run"
 alias tid="~/.local/bin/get-tenant-id.sh"
 
+# Geggjað viðmót fyrir man pgaes
+function fman() {
+    local man_page
+    man_page=$(man -k . | sort | fzf --prompt='Man Pages> ' --preview='echo {} | awk "{print \$1}" | xargs man' --preview-window=down:50%:wrap)
+    man "$(echo "$man_page" | awk '{print $1}')"
+}
+alias fman=fman
 
 # WSL Drasl
 if [[ "$(uname -a | grep -E "[Mm]icrosoft")" ]]; then
