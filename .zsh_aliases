@@ -52,6 +52,7 @@ function fman() {
     man "$(echo "$man_page" | awk '{print $1}')"
 }
 alias fman=fman
+alias cman="compgen -c | sort | fzf --preview 'man {}' --preview-window 'right:60%:wrap' | xargs man"
 
 # WSL Drasl
 if [[ "$(uname -a | grep -E "[Mm]icrosoft")" ]]; then
