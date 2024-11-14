@@ -10,6 +10,12 @@ if [[ ! -n $TMUX  ]]; then
   "$HOME/.local/bin/tmux-launcher.sh"
 fi
 
+# Env variables fyrir vinnuna
+# Hundsum allar færslur sem byrja á #
+if [[ -s "$HOME/work/scripts/.env" ]]; then
+  export $(grep -v '^#' "$HOME/work/scripts/.env" | xargs)
+fi
+
 # WSL drasl
 if [[ "$(uname -a | grep -E "[Mm]icrosoft")" ]]; then
   export DISPLAY="$(awk '/nameserver/ { print $2 }' < /etc/resolv.conf)"
