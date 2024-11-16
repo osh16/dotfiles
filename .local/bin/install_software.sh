@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ lsb_release -a | grep "Ubuntu" ]]; then
+if [[ $(lsb_release -a | grep "Ubuntu") ]]; then
   # Basic tól 
   sudo apt install -y git wget curl gcc build-essential unzip tar 
 
