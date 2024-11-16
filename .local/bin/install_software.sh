@@ -2,10 +2,10 @@
 
 if [[ $(lsb_release -a | grep "Ubuntu") ]]; then
   # Basic tól 
-  sudo apt install -y git wget curl gcc build-essential unzip tar 
-
+  sudo apt install -y git wget curl gcc build-essential unzip tar software-properties-common
   # Hipstera forrit
-  sudo apt install -y zsh neovim tmux fzf fd-find ripgrep htop neofetch
+  sudo apt install -y zsh tmux fzf fd-find ripgrep htop neofetch
+  sudo snap install neovim # Apt útgáfan er outdated, virðist vera í tómu tjóni
 
   # Gnome dót 
   sudo apt install -y gnome-tweaks gnome-browser-connector
