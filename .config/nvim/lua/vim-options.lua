@@ -73,3 +73,6 @@ vim.api.nvim_create_autocmd("FileType", {
 		end, { buffer = true })
 	end,
 })
+
+-- Session options 
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
