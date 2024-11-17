@@ -78,6 +78,7 @@ echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 
+# Bætum við .NET completion
 function _dotnet_zsh_complete() {
   local completions=("$(dotnet complete "$words")")
 
@@ -91,9 +92,12 @@ function _dotnet_zsh_complete() {
   # This is not a variable assignment, don't remove spaces!
   _values = "${(ps:\n:)completions}"
 }
-
 compdef _dotnet_zsh_complete dotnet
 
+# Bætum Mason binaries við í PATH
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
+
+# Bætum NVIM vip í PATH
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
