@@ -43,11 +43,22 @@ return {
 			lspconfig.csharp_ls.setup({
 				capabilities = capabilities,
 			})
+			--lspconfig.omnisharp.setup({
+			--	capabilities = capabilities,
+			--	enable_roslyn_analysers = true,
+			--	enable_import_completion = true,
+			--	organize_imports_on_format = true,
+			--	enable_decompilation_support = true,
+			--	filetypes = { "cs", "vb", "csproj", "sln", "slnx", "props", "csx", "targets" },
+			--})
 			lspconfig.powershell_es.setup({
 				capabilities = capabilities,
 				bundle_path = "~/.local/share/nvim/mason/packages/powershell-editor-services/",
-        settings = { powershell = { codeFormatting = { Preset = 'OTBS' } } }
+				settings = { powershell = { codeFormatting = { Preset = "OTBS" } } },
 			})
+      lspconfig.clangd.setup({
+        capabilities = capabilities,
+      })
 			vim.keymap.set("n", "<leader>K", vim.lsp.buf.hover, { desc = "hover" })
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "go to definition" })
 			vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { desc = "go to implementation" })
