@@ -45,6 +45,7 @@ source ~/.zsh_aliases
 
 # Basic auto/tab complete:
 autoload -Uz compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
 zstyle ':completion:*' menu select matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 zmodload zsh/complist
 compinit
@@ -93,6 +94,29 @@ function _dotnet_zsh_complete() {
   _values = "${(ps:\n:)completions}"
 }
 compdef _dotnet_zsh_complete dotnet
+
+# Azure completion
+_az_python_argcomplete() {
+    local IFS=$'\013'
+    local SUPPRESS_SPACE=0
+    if compopt +o nospace 2> /dev/null; then
+        SUPPRESS_SPACE=1
+    fi
+    COMPREPLY=( $(IFS="$IFS" \
+                  COMP_LINE="$COMP_LINE" \
+                  COMP_POINT="$COMP_POINT" \
+                  COMP_TYPE="$COMP_TYPE" \
+                  _ARGCOMPLETE_COMP_WORDBREAKS="$COMP_WORDBREAKS" \
+                  _ARGCOMPLETE=1 \
+                  _ARGCOMPLETE_SUPPRESS_SPACE=$SUPPRESS_SPACE \
+                  "$1" 8>&1 9>&2 1>/dev/null 2>/dev/null) )
+    if [[ $? != 0 ]]; then
+        unset COMPREPLY
+    elif [[ $SUPPRESS_SPACE == 1 ]] && [[ "$COMPREPLY" =~ [=/:]$ ]]; then
+        compopt -o nospace
+    fi
+}
+complete -o nospace -o default -o bashdefault -F _az_python_argcomplete "az"
 
 # Bætum Mason binaries við í PATH
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
