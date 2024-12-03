@@ -24,6 +24,12 @@ if [[ "$(uname -a | grep -E "[Mm]icrosoft")" ]]; then
   export BROWSER=/usr/bin/wslview
 fi
 
+# Bætum við auka workspace í Ubuntu, virkar ekki í gegnum GUI
+if [[ $(lsb_release -a | grep "Ubuntu") ]]; then
+  gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-5" "['<Super>5']" 
+  gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-5" "['<Super><Shift>5']" 
+fi
+
 setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
 setopt interactive_comments
