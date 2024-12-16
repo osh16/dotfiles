@@ -48,6 +48,8 @@ alias acs="~/.local/bin/apt_search_packages.sh"
 alias scs="~/.local/bin/snap_search_packages.sh"
 alias tid="~/work/scripts/get_tenant_id.sh"
 alias bat="batcat"
+alias c="wl-copy"
+alias ll="$HOME/work/scripts/launch_applications.sh"
 
 # Geggjað viðmót fyrir man pgaes
 function fman() {
