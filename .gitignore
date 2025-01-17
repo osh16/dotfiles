@@ -7,7 +7,7 @@
 !.config/nvim/lua/plugins/
 !.config/nvim/lua/plugins/*
 !.config/powershell/
-!.config/powershell/*
+!.config/powershell/Microsoft.PowerShell_profile.ps1
 !.gitignore
 !.inputrc
 !.zsh_aliases

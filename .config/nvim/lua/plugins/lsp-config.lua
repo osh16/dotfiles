@@ -36,24 +36,6 @@ return {
 			})
 			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
-				settings = {
-					typescript = {
-						format = {
-							baseIndentSize = 2,
-							convertTabsToSpaces = true,
-							indentSize = 2,
-							indentStyle = "Smart",
-						},
-					},
-					javascript = {
-						format = {
-							baseIndentSize = 2,
-							convertTabsToSpaces = true,
-							indentSize = 2,
-							indentStyle = "Smart",
-						},
-					},
-				},
 			})
 			lspconfig.yamlls.setup({
 				capabilities = capabilities,

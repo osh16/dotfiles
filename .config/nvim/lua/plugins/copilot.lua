@@ -39,6 +39,7 @@ return {
 			},
 		},
 
+    vim.keymap.set("v", "<leader>cct", ":CopilotChatToggle<CR>", {desc = "Copilot toggle"}),
     vim.keymap.set("n", "<leader>cct", ":CopilotChatToggle<CR>", {desc = "Copilot toggle"}),
 		vim.keymap.set("n", "<leader>ccq", function()
       local input = vim.fn.input("Quick Chat: ")
