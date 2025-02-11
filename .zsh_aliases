@@ -55,6 +55,7 @@ alias bw="$HOME/work/scripts/build_webparts.sh"
 alias gr="$HOME/work/scripts/get_pipeline_runs.sh"
 alias pmem="ps -eo pid,ppid,comm,%mem,%cpu --sort=-%mem | head -n 15"
 alias pcpu="ps -eo pid,ppid,comm,%mem,%cpu --sort=-%cpu | head -n 15"
+alias pres="$HOME/.local/bin/show_resources_in_sessions.sh | less"
 
 # Geggjað viðmót fyrir man pgaes
 function fman() {
