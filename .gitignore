@@ -12,7 +12,7 @@
 !.inputrc
 !.zsh_aliases
 !.zshrc
-!.tmux_conf
+!.tmux.conf
 !.local/
 !.local/bin/
 !.local/bin/*

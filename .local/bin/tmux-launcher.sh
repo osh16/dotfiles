@@ -19,7 +19,7 @@ choice="$(echo -e "$choices" | fzf | cut -d: -f1)"
 
 if echo -e "$session_ids" | grep "$choice"; then
   # Attach existing session
-  tmux attach-session -t "$choice"
+  tmux switch-client -t "$choice:"
 elif [[ "$choice" = "${create_new_session}" ]]; then
   # Create new session
   tmux new-session
