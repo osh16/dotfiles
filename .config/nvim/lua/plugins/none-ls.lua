@@ -15,10 +15,10 @@ return {
 			vim.keymap.set("n", "<leader>fd", vim.lsp.buf.format, {})
 		end,
 	},
-	{
-		{
-			"vidocqh/auto-indent.nvim",
-			opts = {},
-		},
-	},
+	--{
+	--	{
+	--		"vidocqh/auto-indent.nvim",
+	--		opts = {},
+	--	},
+	--},
 }
