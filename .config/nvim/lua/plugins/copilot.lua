@@ -38,9 +38,16 @@ return {
 				},
 			},
 		},
-
-    vim.keymap.set("v", "<leader>cct", ":CopilotChatToggle<CR>", {desc = "Copilot toggle"}),
+    vim.keymap.set("v", "<leader>cct", "<ESC>:CopilotChatOpen<CR>", {desc = "Copilot toggle"}),
+    vim.keymap.set("v", "<leader>ccf", "<ESC>:CopilotChatFix<CR>", {desc = "Copilot fix"}),
+    vim.keymap.set("v", "<leader>cco", "<ESC>:CopilotChatOptimize<CR>", {desc = "Copilot optimize"}),
+    vim.keymap.set("v", "<leader>cce", "<ESC>:CopilotChatExplain<CR>", {desc = "Copilot explain"}),
     vim.keymap.set("n", "<leader>cct", ":CopilotChatToggle<CR>", {desc = "Copilot toggle"}),
+    vim.keymap.set("n", "<leader>cce", ":CopilotChatExplain<CR>", {desc = "Copilot explain"}),
+    vim.keymap.set("n", "<leader>ccf", ":CopilotChatFix<CR>", {desc = "Copilot fix"}),
+    vim.keymap.set("n", "<leader>cco", ":CopilotChatOptimize<CR>", {desc = "Copilot optimize"}),
+    vim.keymap.set("n", "<leader>ccr", ":CopilotChatReset<CR>", {desc = "Copilot review"}),
+    vim.keymap.set("n", "<leader>ccs", ":CopilotChatStop<CR>", {desc = "Copilot stop"}),
 		vim.keymap.set("n", "<leader>ccq", function()
       local input = vim.fn.input("Quick Chat: ")
       if input ~= "" then
