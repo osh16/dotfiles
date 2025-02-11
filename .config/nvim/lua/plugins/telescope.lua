@@ -11,12 +11,6 @@ return {
 		},
 		config = function()
 			require("telescope").setup({
-				--pickers = {
-				--	find_files = {
-				--		hidden = true,
-				--		theme = "ivy",
-				--	},
-				--},
 				extensions = {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown({}),
@@ -25,6 +19,9 @@ return {
 			})
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "find files" })
+			vim.keymap.set("n", "<leader>fi", function()
+				require("telescope.builtin").find_files({ no_ignore = true, hidden = true })
+			end, { desc = "find files including gitignore" })
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "live grep" })
 			vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "list buffers" })
 			vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "help tags" })
