@@ -24,8 +24,8 @@ if [[ "$(uname -a | grep -E "[Mm]icrosoft")" ]]; then
   export BROWSER=/usr/bin/wslview
 fi
 
-# Bætum við auka workspace í Ubuntu, virkar ekki í gegnum GUI
-if [[ $(lsb_release -a | grep "Ubuntu")  ]]; then
+# Bætum við auka workspace í Gnome
+if [[ $(echo $XDG_CURRENT_DESKTOP | grep "GNOME") ]]; then
 
   # Fjarlægjum dash-to-dock ruglið
   if [[ $(gsettings list-recursively "org.gnome.shell.extensions.dash-to-dock") ]]; then
@@ -46,6 +46,19 @@ if [[ $(lsb_release -a | grep "Ubuntu")  ]]; then
     gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-$i" "['<Super><Shift>$i']" 
   done
 fi
+
+# Chromium drasl
+EXT_POLICY="/etc/opt/chrome/policies/managed/extensions.json"
+if [[ ! -f "$EXT_POLICY" ]]; then
+  sudo mkdir -p /etc/opt/chrome/policies/managed
+  echo '{
+    "ExtensionInstallForcelist": [
+      "kcdolhjbipnfgefpjaopfbjbannphidh",  # SP REST JSON
+      "bcjindcccaagfpapjjmafapmmgkkhgoa"   # JSON Formatter
+    ]
+  }' | sudo tee "$EXT_POLICY"
+fi
+
 
 setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
@@ -148,3 +161,4 @@ export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+. "/home/oskar/.deno/env"
