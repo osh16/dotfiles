@@ -16,6 +16,6 @@ return {
         desc = "Peek (Markdown Preview)",
       },
     },
-    opts = { theme = "dark", app = "webview", filetype = { "markdown" } },
+    opts = { theme = "dark", app = "browser", filetype = { "markdown" } },
   },
 }

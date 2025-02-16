@@ -22,7 +22,9 @@ return {
     { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
     { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
+    { "<leader>þ", function() Snacks.picker.grep() end, desc = "Grep" },
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
+    { "<leader>Æ", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>nf", function() Snacks.picker.notifications() end, desc = "Notification History" },
     -- git
     { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit", mode = { "n" } },
