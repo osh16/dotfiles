@@ -16,4 +16,3 @@ Skriftur eru í _~/.local/bin_. Í _.zsh_aliases_ er vísað í allskonar vinnus
 | tmux_sessionizer.sh | Birtir valmynd af mögulegum tmux sessionum til að fíra upp | Ctrl+A f |
 | tmux_resize_or_select.sh | Hjálparskrifta til að hoppa á milli tveggja tmux glugga (einn vim og einn terminal) | Ctrl+A ; |
 | x11-gnome-do.py | Man ekki, eitthvað sem ég skoðaði til að hjálpa með multi-monitor support |
-
