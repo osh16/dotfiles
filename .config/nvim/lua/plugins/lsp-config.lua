@@ -60,9 +60,9 @@ return {
         capabilities = capabilities,
       })
 			vim.keymap.set("n", "<leader>K", vim.lsp.buf.hover, { desc = "hover" })
-			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "go to definition" })
-			vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { desc = "go to implementation" })
-			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "go to references" })
+			--vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "go to definition" })
+			--vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { desc = "go to implementation" })
+			--vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "go to references" })
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "code action" })
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "rename" })
 		end,
