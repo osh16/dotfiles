@@ -1,0 +1,6 @@
+{
+    "diagnostics.globals": [
+        "vim",
+        "ensure_right_pane"
+    ]
+}

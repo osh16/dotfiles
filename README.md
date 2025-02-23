@@ -2,6 +2,18 @@
 
 Hér erum við með dotfiles fyrir zsh, tmux, vim, o.fl. 
 
+## Uppsetning
+
+Skriftan _install_software.sh_ heldur utan um allskonar forrit sem eru notuð.
+
+Til að setja allt upp notum við _stow_
+
+```sh
+git clone git@github.com:osh16/dotfiles.git
+cd ~/dotfiles
+stow -vt ~ */
+```
+
 ## Skriftur
 
 Skriftur eru í _~/.local/bin_. Í _.zsh_aliases_ er vísað í allskonar vinnuskriftur sem eru hýstar á _dev.azure_ en ekki hérna.
