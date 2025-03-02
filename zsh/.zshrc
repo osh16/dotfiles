@@ -47,19 +47,6 @@ if [[ $(echo $XDG_CURRENT_DESKTOP | grep "GNOME") ]]; then
   done
 fi
 
-# Chromium drasl
-EXT_POLICY="/etc/opt/chrome/policies/managed/extensions.json"
-if [[ ! -f "$EXT_POLICY" ]]; then
-  sudo mkdir -p /etc/opt/chrome/policies/managed
-  echo '{
-    "ExtensionInstallForcelist": [
-      "kcdolhjbipnfgefpjaopfbjbannphidh",  # SP REST JSON
-      "bcjindcccaagfpapjjmafapmmgkkhgoa"   # JSON Formatter
-    ]
-  }' | sudo tee "$EXT_POLICY"
-fi
-
-
 setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
 setopt interactive_comments
@@ -78,6 +65,7 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 
 source ~/.zsh_aliases
+source ~/.zshenv
 
 # Basic auto/tab complete:
 autoload -Uz compinit && compinit
