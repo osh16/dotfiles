@@ -65,7 +65,6 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 
 source ~/.zsh_aliases
-source ~/.zshenv
 
 # Basic auto/tab complete:
 autoload -Uz compinit && compinit
