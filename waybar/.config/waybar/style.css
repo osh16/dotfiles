@@ -1,8 +1,9 @@
+/* Stolen from typecraft */
+
 @import "mocha.css"; 
 
 * {
-    font-family: "MesloLGS Nerd Font Mono Bold";
-    font-size: 16px;
+    font-size: 14px;
     min-height: 0;
     font-weight: bold;
 }

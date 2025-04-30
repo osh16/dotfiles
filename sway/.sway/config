@@ -38,10 +38,10 @@ output * bg ~/pictures/wallpaper/win95.jpg fill
 #
 # Example configuration:
 #
-exec swayidle -w \
-  timeout 300 'swaylock -f -c 000000' \
-  timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-  before-sleep 'swaylock -f -c 000000'
+#exec swayidle -w \
+#  timeout 300 'swaylock -f -c 000000' \
+#  timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#  before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -73,6 +73,7 @@ exec swayidle -w \
 
     # Start your launcher
     bindsym $mod+d exec $menu
+
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -218,12 +219,15 @@ input "type:touchpad" {
   dwt enabled
   tap enabled
   natural_scroll enabled
+  pointer_accel 0.4
 }
 
 # Keyboard settings
 input "type:keyboard" {
   xkb_layout us,is
   xkb_options ctrl:nocaps,grp:win_space_toggle
+  repeat_delay 250
+  repeat_rate 30
 }
 
 # Status bar
@@ -234,5 +238,7 @@ bar {
     #mode dock
     #font pango:monospace 10
 }
+
+smart_borders on
 
 include @sysconfdir@/sway/config.d/*

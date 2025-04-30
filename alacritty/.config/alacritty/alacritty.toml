@@ -1,0 +1,14 @@
+import = [ "~/.config/alacritty/catppuccin-mocha.toml" ]
+
+[env]
+TERM = "xterm-256color"
+
+[shell]
+program = "/home/oskar/.local/bin/tmux-launcher.sh"
+
+[font]
+normal = { family = "UbuntuMono Nerd Font", style = "Regular" }
+bold = { family = "UbuntuMono Nerd Font", style = "Bold" }
+italic = { family = "UbuntuMono Nerd Font", style = "Italic" }
+size = 12.0
+
