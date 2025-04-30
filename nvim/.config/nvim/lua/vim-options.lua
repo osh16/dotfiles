@@ -11,6 +11,7 @@ local options = {
 	ignorecase = true,
 	encoding = "utf-8",
 	termguicolors = true,
+  splitright = true,
 }
 
 for k, v in pairs(options) do
