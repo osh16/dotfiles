@@ -15,7 +15,12 @@ return {
       local cmp = require("cmp")
       local luasnip = require("luasnip")
 
-      require("luasnip.loaders.from_vscode").lazy_load()
+      require("luasnip.loaders.from_vscode").lazy_load({
+        paths = {
+          vim.fn.expand("~/work/snippets"),
+          vim.fn.expand("~/work/vscode-spfx-snippets")
+        }
+      })
 
       cmp.setup({
         snippet = {
