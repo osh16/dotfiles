@@ -36,6 +36,13 @@ return {
 			})
 			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
+				filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+				root_dir = lspconfig.util.root_pattern("package.json"),
+			})
+			lspconfig.denols.setup({
+				capabilities = capabilities,
+				filetypes = {}, -- Disable for all filetypes
+				root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
 			})
 			lspconfig.yamlls.setup({
 				capabilities = capabilities,
