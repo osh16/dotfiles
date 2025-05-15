@@ -23,8 +23,10 @@ return {
       "<leader><space>",
       function()
         Snacks.picker.smart({
-          multi = { "files", "buffers", "recent" },
+          multi = { "files"  },
           ignorecase = true,
+          hidden = true,
+          ignore_patterns = { ".git/" },
         })
       end,
       desc = "Smart Find Files",
