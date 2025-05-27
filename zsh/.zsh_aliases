@@ -2,7 +2,7 @@
 
 [ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
 
-for command in mount umount sv apt updatedb su shutdown poweroff reboot snap apt-get ; do
+for command in mount umount sv apt updatedb su shutdown poweroff reboot snap apt-get dmesg ; do
 	alias $command="sudo $command"
 done; unset command
 
@@ -12,9 +12,9 @@ alias rm="rm -vI"
 alias bc="bc -ql"
 alias rsync="rsync -vrPlu"
 alias mkd="mkdir -pv"
-alias yt="yt-dlp --embed-metadata -i"
-alias yta="yt -x -f bestaudio/best"
-alias ytt="yt --skip-download --write-thumbnail"
+alias yt="yt-dlp --embed-metadata -i -P $HOME/videos"
+alias yta="yt-dlp -x -f bestaudio/best -o '$HOME/music/%(title)s.%(ext)s'"
+alias ytt="yt-dlp --skip-download --write-thumbnail -P $HOME/videos"
 alias ffmpeg="ffmpeg -hide_banner"
 alias ls="ls -hN --color=auto --group-directories-first"
 alias grep="grep --color=auto"
@@ -30,7 +30,7 @@ alias history="history 1"
 alias ref="source ~/.zsh_aliases;source ~/.zshrc;tmux source ~/.tmux.conf;cd ~/dotfiles;stow -vt ~ */;cd -"
 alias cvw="cd ~/.local/share/nvim/vimwiki"
 alias gbs="gulp clean;gulp bundle --ship; gulp package-solution --ship"
-alias gs="npm run serve || gulp serve --max-old-space=4096--nobrowser"
+alias gs="gulp clean;npm run serve || gulp serve --max-old-space=4096--nobrowser"
 alias tmux="tmux -2"
 alias fd="fdfind"
 alias dn="dotnet"
