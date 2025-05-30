@@ -147,10 +147,15 @@ _az_python_argcomplete() {
 }
 complete -o nospace -o default -o bashdefault -F _az_python_argcomplete "az"
 
-# Bætum Mason binaries við í PATH
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
+
+# asdf
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+autoload -Uz compinit && compinit
 
 # Bætum NVIM vip í PATH
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
