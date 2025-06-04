@@ -1,6 +1,6 @@
 {
-    "diagnostics.globals": [
-        "vim",
-        "ensure_right_pane"
-    ]
+  "diagnostics.globals": [
+    "vim",
+    "ensure_right_pane"
+  ]
 }
