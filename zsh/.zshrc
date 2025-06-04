@@ -159,3 +159,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/home/oskar/.zsh/completions:"* ]]; then export FPATH="/home/oskar/.zsh/completions:$FPATH"; fi
+. "/$HOME/.deno/env"
