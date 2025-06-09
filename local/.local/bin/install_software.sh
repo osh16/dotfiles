@@ -20,6 +20,11 @@ if [[ ! -d "$HOME/.nvm" ]]; then
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 fi
 
+# Deno
+if [[ ! -x "$(command -v deno)" ]]; then
+  curl -fsSL https://deno.land/install.sh | sh
+fi
+
 # Lazygit
 if [[ ! -f $(which lazygit) ]]; then
   LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
