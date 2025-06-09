@@ -63,9 +63,12 @@ return {
 				bundle_path = "~/.local/share/nvim/mason/packages/powershell-editor-services/",
 				settings = { powershell = { codeFormatting = { Preset = "OTBS" } } },
 			})
-      lspconfig.clangd.setup({
-        capabilities = capabilities,
-      })
+			lspconfig.clangd.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.pylsp.setup({
+				capabilities = capabilities,
+			})
 			vim.keymap.set("n", "<leader>K", vim.lsp.buf.hover, { desc = "hover" })
 			--vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "go to definition" })
 			--vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { desc = "go to implementation" })

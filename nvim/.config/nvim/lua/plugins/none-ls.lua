@@ -10,6 +10,7 @@ return {
           --null_ls.builtins.formatting.clang_format.with({
           --  extra_args = { "--style=Chromium" },
           --}),
+          null_ls.builtins.formatting.black,
         },
       })
       vim.keymap.set("n", "<leader>fd", vim.lsp.buf.format, {})
