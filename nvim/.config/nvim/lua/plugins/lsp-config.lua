@@ -69,6 +69,7 @@ return {
 			lspconfig.pylsp.setup({
 				capabilities = capabilities,
 			})
+			vim.keymap.set("n", "<leader>dl", vim.diagnostic.open_float, { desc = "diagnostic line" })
 			vim.keymap.set("n", "<leader>K", vim.lsp.buf.hover, { desc = "hover" })
 			--vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "go to definition" })
 			--vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { desc = "go to implementation" })
