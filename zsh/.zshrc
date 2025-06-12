@@ -108,6 +108,14 @@ source /usr/share/doc/fzf/examples/completion.zsh
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs'
 bindkey '^R' fzf-history-widget
 
+# fman bindað á ctrl+f, geggjað viðmót fyrir man pgaes
+fman-launch-widget() {
+  fman
+  zle reset-prompt
+}
+zle -N fman-launch-widget
+bindkey '^F' fman-launch-widget
+
 # Bætum við .NET completion
 function _dotnet_zsh_complete() {
   local completions=("$(dotnet complete "$words")")

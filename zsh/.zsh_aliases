@@ -40,7 +40,7 @@ alias acs="$HOME/.local/bin/apt_search_packages.sh"
 alias scs="$HOME/.local/bin/snap_search_packages.sh"
 alias bat="batcat"
 alias c="wl-copy"
-alias ll="$HOME/work/scripts/launch_applications.sh &"
+alias ll="$HOME/work/scripts/launch_applications.sh & sleep 3; $HOME/work/scripts/launch_applications.sh &"
 alias tid="$HOME/work/scripts/get_tenant_id.sh"
 alias dq="$HOME/work/scripts/deploy_qm_sppkg.sh"
 alias dw="$HOME/work/scripts/deploy_webparts.sh"
@@ -50,6 +50,7 @@ alias pmem="ps -eo pid,ppid,comm,%mem,%cpu --sort=-%mem | head -n 15"
 alias pcpu="ps -eo pid,ppid,comm,%mem,%cpu --sort=-%cpu | head -n 15"
 alias pres="$HOME/.local/bin/show_resources_in_sessions.sh | less"
 alias sc="sudo sysctl -p"
+alias go="$HOME/.local/bin/open_git_repo.sh > /dev/null 2>&1 &"
 
 # Geggjað viðmót fyrir man pgaes
 function fman() {
