@@ -75,6 +75,9 @@ return {
 			--vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "go to references" })
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "code action" })
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "rename" })
+			vim.keymap.set("n", "<leader>dl", function()
+				vim.diagnostic.open_float(nil, { focus = false, scope = "line" })
+			end, { desc = "show line diagnostics" })
 		end,
 	},
 }
