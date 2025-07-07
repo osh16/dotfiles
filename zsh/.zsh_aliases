@@ -51,6 +51,7 @@ alias pcpu="ps -eo pid,ppid,comm,%mem,%cpu --sort=-%cpu | head -n 15"
 alias pres="$HOME/.local/bin/show_resources_in_sessions.sh | less"
 alias sc="sudo sysctl -p"
 alias go="$HOME/.local/bin/open_git_repo.sh > /dev/null 2>&1 &"
+alias omnisharp="OmniSharp"
 
 # Geggjað viðmót fyrir man pgaes
 function fman() {
