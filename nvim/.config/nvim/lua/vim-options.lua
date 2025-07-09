@@ -21,6 +21,17 @@ end
 vim.g.mapleader = " "
 vim.g.background = "light"
 
+-- for c#
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "cs",
+  callback = function()
+    vim.bo.tabstop = 4
+    vim.bo.shiftwidth = 4
+    vim.bo.softtabstop = 4
+    vim.bo.expandtab = true
+  end,
+})
+
 -- Disable netrw fyrir nvim-tree performance
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

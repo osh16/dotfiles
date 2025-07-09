@@ -5,6 +5,8 @@ return {
       local dap = require("dap")
       local ui = require("dapui")
       ui.setup()
+      require("nvim-dap-virtual-text").setup()
+
       local dotnet = require("configs.nvim-dap-dotnet")
 
       local mason_path = vim.fn.stdpath("data") .. "/mason/packages/netcoredbg/netcoredbg"
@@ -24,6 +26,10 @@ return {
           request = "launch",
           program = function()
             return dotnet.build_dll_path()
+          end,
+          args = function()
+            local input = vim.fn.input("Arguments: ")
+            return vim.split(input, " ", { trimempty = true })
           end,
         },
       }
