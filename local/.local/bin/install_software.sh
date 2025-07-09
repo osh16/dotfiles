@@ -40,4 +40,8 @@ if [[ ! -f $(which asdf) ]]; then
   curl -Lo asdf.tar.gz "https://github.com/asdf-vm/asdf/releases/download/v${ASDF_VERSION}/asdf-v0.18.0-linux-amd64.tar.gz"
   sudo tar -xzf asdf.tar.gz -C /usr/local/bin
   rm asdf.tar.gz
+
+  # Add autocompletion
+  mkdir -p "${ASDF_DATA_DIR:-$HOME/.asdf}/completions"
+  asdf completion zsh > "${ASDF_DATA_DIR:-$HOME/.asdf}/completions/_asdf"
 fi

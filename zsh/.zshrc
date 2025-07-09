@@ -174,5 +174,3 @@ export NVM_DIR="$HOME/.nvm"
 # Add deno completions to search path
 if [[ ":$FPATH:" != *":/home/oskar/.zsh/completions:"* ]]; then export FPATH="/home/oskar/.zsh/completions:$FPATH"; fi
 . "/$HOME/.deno/env"
-
-
