@@ -20,54 +20,24 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local lspconfig = require("lspconfig")
-			lspconfig.azure_pipelines_ls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.bashls.setup({
-				capabilities = capabilities,
-			})
-      lspconfig.vuels.setup({
-        capabilities = capabilities,
-      })
-			lspconfig.html.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.jsonls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
-			})
 			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
 				filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
 				root_dir = lspconfig.util.root_pattern("package.json"),
 			})
-			lspconfig.yamlls.setup({
-				capabilities = capabilities,
-			})
-			--lspconfig.csharp_ls.setup({
+			--lspconfig.omnisharp.setup({
 			--	capabilities = capabilities,
+			--	enable_roslyn_analyzers = true,
+			--	enable_import_completion = true,
+			--	organize_imports_on_format = true,
+			--	enable_decompilation_support = true,
+			--	cmd = { "omnisharp", "-z", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
+			--	filetypes = { "cs", "vb", "csx" },
 			--})
-			lspconfig.omnisharp.setup({
-				capabilities = capabilities,
-				enable_roslyn_analyzers = true,
-				enable_import_completion = true,
-				organize_imports_on_format = true,
-				enable_decompilation_support = true,
-				cmd = { "omnisharp", "-z", "--languageserver", "--hostPID", tostring(vim.fn.getpid()) },
-				filetypes = { "cs", "vb", "csx" },
-			})
 			lspconfig.powershell_es.setup({
 				capabilities = capabilities,
 				bundle_path = "~/.local/share/nvim/mason/packages/powershell-editor-services/",
 				settings = { powershell = { codeFormatting = { Preset = "OTBS" } } },
-			})
-			lspconfig.clangd.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.pylsp.setup({
-				capabilities = capabilities,
 			})
 			vim.keymap.set("n", "<leader>dl", vim.diagnostic.open_float, { desc = "diagnostic line" })
 			vim.keymap.set("n", "<leader>dc", function()
