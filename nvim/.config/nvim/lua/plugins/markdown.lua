@@ -17,6 +17,6 @@ return {
         desc = "Peek (Markdown Preview)",
       },
     },
-    opts = { theme = "dark", app = "browser", filetype = { "markdown" } },
+    opts = { theme = "dark", app = "browser", filetype = { "markdown", "vimwiki" } },
   },
 }
