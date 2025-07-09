@@ -31,4 +31,13 @@ if [[ ! -f $(which lazygit) ]]; then
   curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
   tar xf lazygit.tar.gz lazygit
   sudo install lazygit -D -t /usr/local/bin/
+  rm lazygit.tar.gz lazygit
+fi
+
+# asdf
+if [[ ! -f $(which asdf) ]]; then
+  ASDF_VERSION=$(curl -s "https://api.github.com/repos/asdf-vm/asdf/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
+  curl -Lo asdf.tar.gz "https://github.com/asdf-vm/asdf/releases/download/v${ASDF_VERSION}/asdf-v0.18.0-linux-amd64.tar.gz"
+  sudo tar -xzf asdf.tar.gz -C /usr/local/bin
+  rm asdf.tar.gz
 fi
