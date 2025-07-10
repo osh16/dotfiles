@@ -11,7 +11,7 @@ if [[ $(lsb_release -a | grep "Ubuntu") ]]; then
   sudo apt install -y gnome-tweaks gnome-browser-connector
 
   # Annað
-  sudo apt install -y dotnet python3 python3-venv luarocks gh
+  sudo apt install -y python3 python3-venv luarocks gh golang
   sudo snap install -y code postman chromium brave
 fi
 
@@ -44,4 +44,14 @@ if [[ ! -f $(which asdf) ]]; then
   # Add autocompletion
   mkdir -p "${ASDF_DATA_DIR:-$HOME/.asdf}/completions"
   asdf completion zsh > "${ASDF_DATA_DIR:-$HOME/.asdf}/completions/_asdf"
+fi
+
+# zk
+if [[ ! -f $(which zk) ]]; then
+  git clone https://github.com/zk-org/zk.git
+  cd zk
+  make
+  sudo mv zk /usr/local/bin
+  cd -
+  rm -rf zk
 fi
