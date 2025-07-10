@@ -23,7 +23,8 @@ if echo -e "$session_ids" | grep "$choice"; then
   tmux attach-session -t "$choice"
 elif [[ "$choice" = "${create_new_session}" ]]; then
   # Create new session
-  tmux new-session
+  #tmux new-session
+  ~/.local/bin/tmux-sessionizer.sh
 elif [[ "$choice" = "${start_without_tmux}" ]]; then
   # Start without tmux
   :
