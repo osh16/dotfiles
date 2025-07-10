@@ -1,28 +1,12 @@
 autoload -U colors && colors	# Load colors
 PS1="%B[%{$fg[yellow]%}%n@%{$fg[yellow]%}%M %{$reset_color%}%~%B]%{$reset_color%}$%b "
 
-export TERM="xterm-256color"
-export EDITOR="nvim"
-export VISUAL="nvim"
 
 # Start the tmux session if not alraedy in the tmux session
 if [[ ! -n $TMUX  ]]; then
   "$HOME/.local/bin/tmux-launcher.sh"
 fi
 
-# Env variables fyrir vinnuna
-# Hundsum allar færslur sem byrja á #
-if [[ -s "$HOME/work/scripts/.env" ]]; then
-  export $(grep -v '^#' "$HOME/work/scripts/.env" | xargs)
-fi
-
-# WSL drasl
-if [[ "$(uname -a | grep -E "[Mm]icrosoft")" ]]; then
-  export DISPLAY="$(awk '/nameserver/ { print $2 }' < /etc/resolv.conf)"
-  export LIBGL_ALWAYS_INDIRECT=1
-  export PROMPT="[%F{yellow}%n%f@%F{yellow}%m%f: %~]%# "
-  export BROWSER=/usr/bin/wslview
-fi
 
 # Bætum við auka workspace í Gnome
 if [[ $(echo $XDG_CURRENT_DESKTOP | grep "GNOME") ]]; then
@@ -155,21 +139,14 @@ _az_python_argcomplete() {
 }
 complete -o nospace -o default -o bashdefault -F _az_python_argcomplete "az"
 
-export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
 # asdf
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 autoload -Uz compinit && compinit
 
 # dotnet dot
 export DOTNET_ROOT="$(asdf where dotnet-core 2>/dev/null || asdf where dotnet 2>/dev/null || dirname $(command -v dotnet))"
-export PATH="$PATH:$HOME/.dotnet/tools"
 
-# Bætum NVIM vip í PATH
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Add deno completions to search path
 if [[ ":$FPATH:" != *":/home/oskar/.zsh/completions:"* ]]; then export FPATH="/home/oskar/.zsh/completions:$FPATH"; fi

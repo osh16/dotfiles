@@ -4,7 +4,7 @@ if [[ $(lsb_release -a | grep "Ubuntu") ]]; then
   sudo apt install -y git wget curl gcc build-essential unzip tar software-properties-common wl-clipboard 
 
   # Hipstera forrit
-  sudo apt install -y zsh tmux fzf fd-find ripgrep htop neofetch tldr batcat stow
+  sudo apt install -y zsh tmux fzf fd-find ripgrep htop neofetch tldr bat stow
   sudo snap install neovim # Apt útgáfan er outdated, virðist vera í tómu tjóni
 
   # Gnome dót 

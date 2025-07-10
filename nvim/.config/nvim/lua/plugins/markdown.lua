@@ -19,4 +19,16 @@ return {
     },
     opts = { theme = "dark", app = "browser", filetype = { "markdown", "vimwiki" } },
   },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" },
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {
+      heading = {
+        enabled = false,
+      },
+    },
+  vim.keymap.set("n", "<leader>m", "<Cmd>RenderMarkdown toggle<CR>", { desc = "Toggle markdown", noremap = true }),
+  }
 }
