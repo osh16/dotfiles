@@ -2,7 +2,7 @@ local options = {
 	swapfile = false,
 	clipboard = "unnamedplus",
 	number = true,
-	--relativenumber = true,
+	relativenumber = true,
 	smartindent = true,
 	expandtab = true,
 	tabstop = 2,
@@ -60,31 +60,10 @@ vim.keymap.set("n", "þ", "/")
 vim.keymap.set("n", "<leader>tn", ":tabnew<cr>", { desc = "new tab" })
 vim.keymap.set("n", "<leader>tc", ":tabclose<cr>", { desc = "close tab" })
 
--- Search and replace
-vim.keymap.set("n", "S", ":%s//g<Left><Left>")
-
 -- Disable q: command history sem ég kveiki alltaf óvart á
 vim.keymap.set("n", "q:", "<nop>")
 
 vim.wo.number = true
-
--- Define mappings only for Lua files
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "lua",
-	callback = function()
-		-- Execute current line in normal mode
-		vim.keymap.set("n", "<leader>l", function()
-			vim.cmd("lua " .. vim.fn.getline("."))
-		end, { buffer = true })
-
-		-- Execute selected lines in Visual mode
-		vim.keymap.set("v", "<leader>l", function()
-			local lines = vim.fn.getline("'<", "'>")
-			local code = table.concat(lines, "\n")
-			vim.api.nvim_exec("lua << EOF\n" .. code .. "\nEOF", false)
-		end, { buffer = true })
-	end,
-})
 
 -- Session options 
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
