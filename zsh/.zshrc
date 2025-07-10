@@ -139,17 +139,3 @@ _az_python_argcomplete() {
 }
 complete -o nospace -o default -o bashdefault -F _az_python_argcomplete "az"
 
-
-# asdf
-fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
-autoload -Uz compinit && compinit
-
-# dotnet dot
-export DOTNET_ROOT="$(asdf where dotnet-core 2>/dev/null || asdf where dotnet 2>/dev/null || dirname $(command -v dotnet))"
-
-
-# Add deno completions to search path
-if [[ ":$FPATH:" != *":/home/oskar/.zsh/completions:"* ]]; then export FPATH="/home/oskar/.zsh/completions:$FPATH"; fi
-. "/$HOME/.deno/env"
-
-export ZK_NOTEBOOK_DIR="$HOME/vimwiki"
