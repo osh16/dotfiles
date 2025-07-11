@@ -21,19 +21,37 @@ return {
       vim.keymap.set("v", "<leader>zl", ":'<,'>ZkInsertLink<CR>", { desc = "Zk Insert Link" })
       vim.keymap.set("v", "<leader>zf", ":'<,'>ZkMatch<CR>", { desc = "Zk match visual selection"})
 			vim.keymap.set("n", "<leader>zg", function()
-      vim.fn.jobstart({ "~/.local/bin/auto_save_zk.sh" }, {
-        stdout_buffered = true,
-        on_stdout = function(_, data)
-          if data then
-            vim.notify(table.concat(data, "\n"), vim.log.levels.INFO, { title = "auto_save_zk" })
-          end
-        end,
-        on_stderr = function(_, data)
-          if data then
-            vim.notify(table.concat(data, "\n"), vim.log.levels.ERROR, { title = "auto_save_zk" })
-          end
-        end,
-      })
+        local script_path = vim.fn.expand("~/.local/bin/auto_save_zk.sh")
+        vim.fn.jobstart({ script_path }, {
+          stdout_buffered = true,
+          stderr_buffered = true,
+
+          on_stdout = function(_, data)
+            if data and data[1] ~= "" then
+              vim.notify(table.concat(data, "\n"), vim.log.levels.INFO, {
+                title = "🧠 ZK Sync",
+                timeout = 3000,
+                icon = "",
+              })
+            else
+              vim.notify("ZK notes pushed (no output).", vim.log.levels.INFO, {
+                title = "🧠 ZK Sync",
+                timeout = 2000,
+                icon = "",
+              })
+            end
+          end,
+
+          on_stderr = function(_, data)
+            if data and data[1] ~= "" then
+              vim.notify(table.concat(data, "\n"), vim.log.levels.ERROR, {
+                title = "❌ ZK Push Failed",
+                timeout = 5000,
+                icon = "",
+              })
+            end
+          end,
+        })
 			end, { desc = "Zk Git Push" })
 		end,
 	},
