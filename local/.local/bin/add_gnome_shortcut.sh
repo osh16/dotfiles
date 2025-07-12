@@ -2,7 +2,6 @@
 
 # Small script which adds a keyboard shortcut to GNOME. 
 
-# Help command
 if [[ "$1" == "--help" || "$1" == "-h" ]]; then
   echo "Usage: $(basename $0) [--keybinding=<binding>] [--command=<command>] [--name=<name>]"
   echo "Example: $(basename $0) --keybinding='<Super>h' --command='alacritty -e htop' --name='htop'"
@@ -24,7 +23,19 @@ if [[ -z "$keybinding" || -z "$command" || -z "$name" ]]; then
     exit 1
 fi
 
+echo "🍰 Adding shortcut: $name [$keybinding]"
+
 n="$(( $(dconf read /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings | grep -o "custom[0-9]\+" | sed 's/custom//' | sort -n | tail -1) + 1))"
+
+# check if keybinding already exists
+existing=$(dconf list /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/ | grep -E '^custom[0-9]+/$')
+for dir in $existing; do
+    existing_binding=$(dconf read /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/${dir}binding | tr -d "'")
+    if [[ "$existing_binding" == "$keybinding" ]]; then
+        echo "$keybinding already exists"
+        exit 1
+    fi
+done
 
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$n/binding "'$keybinding'"
 dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$n/command "'$command'"
@@ -39,3 +50,5 @@ else
   updated_list="$updated_list, $new_entry]"
   dconf write /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings "$updated_list"
 fi
+
+echo " ok"

@@ -8,28 +8,6 @@ if [[ ! -n $TMUX  ]]; then
 fi
 
 
-# Bætum við auka workspace í Gnome
-if [[ $(echo $XDG_CURRENT_DESKTOP | grep "GNOME") ]]; then
-
-  # Fjarlægjum dash-to-dock ruglið
-  if [[ $(gsettings list-recursively "org.gnome.shell.extensions.dash-to-dock") ]]; then
-    for i in {1..9}; do
-      gsettings set "org.gnome.shell.extensions.dash-to-dock" "app-hotkey-$i" "['Disabled']"
-      gsettings set "org.gnome.shell.extensions.dash-to-dock" "app-shift-hotkey-$i" "['Disabled']"
-      gsettings set "org.gnome.shell.extensions.dash-to-dock" "app-ctrl-hotkey-$i" "['Disabled']"
-      gsettings set "org.gnome.shell.keybindings" "switch-to-application-$i" "['Disabled']"
-    done
-  fi
-
-  # Stillum á að workspaces 1-9 séu til
-  gsettings set "org.gnome.mutter" "dynamic-workspaces" false
-  gsettings set "org.gnome.desktop.wm.preferences" "num-workspaces" 9
-
-  for i in {1..9}; do
-    gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-$i" "['<Super>$i']" 
-    gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-$i" "['<Super><Shift>$i']" 
-  done
-fi
 
 setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
