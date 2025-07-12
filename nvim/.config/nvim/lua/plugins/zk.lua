@@ -41,14 +41,23 @@ return {
               })
             end
           end,
-
           on_stderr = function(_, data)
             if data and data[1] ~= "" then
-              vim.notify(table.concat(data, "\n"), vim.log.levels.ERROR, {
-                title = "❌ ZK Push Failed",
-                timeout = 5000,
-                icon = "",
-              })
+              -- Only notify if there is actual error output (not just any output)
+              local has_error = false
+              for _, line in ipairs(data) do
+                if line ~= "" and not line:match("^To github.com:") and not line:match("^Already up to date%.") and not line:match("^%[master") and not line:match("master -> master") then
+                  has_error = true
+                  break
+                end
+              end
+              if has_error then
+                vim.notify(table.concat(data, "\n"), vim.log.levels.ERROR, {
+                  title = "❌ ZK Push Failed",
+                  timeout = 5000,
+                  icon = "",
+                })
+              end
             end
           end,
         })

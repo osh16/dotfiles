@@ -26,6 +26,7 @@ export DOTNET_ROOT="$(asdf where dotnet-core 2>/dev/null || asdf where dotnet 2>
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export PATH="$PATH:$HOME/.dotnet/tools"
+export PATH="$HOME/.local/bin:$PATH"
 
 # fpath
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
