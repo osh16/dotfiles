@@ -38,6 +38,3 @@ if [[ $(gsettings list-recursively "org.gnome.shell.extensions.dash-to-dock") ]]
     gsettings set "org.gnome.shell.keybindings" "switch-to-application-$i" "['Disabled']"
   done
 fi
-
-
-
