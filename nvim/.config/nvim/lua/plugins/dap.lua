@@ -33,6 +33,22 @@ return {
           end,
         },
       }
+      dap.adapters.go = {
+        type = "server",
+        port = "${port}",
+        executable = {
+          command = "dlv",
+          args = { "dap", "-l", "127.0.0.1:${port}" },
+        }
+      }
+      dap.configurations.go = {
+        {
+          type = "go",
+          name = "Debug",
+          request = "launch",
+          program = "${file}",
+        },
+      }
       vim.fn.sign_define('DapBreakpoint', {text='🔴', texthl='', linehl='', numhl=''})
       vim.fn.sign_define('DapStopped', {text='➡️', texthl='', linehl='', numhl=''})
       vim.keymap.set("n", "<leader>b", "<Cmd>lua require('dap').toggle_breakpoint()<CR>", { desc = "DAP Toggle Breakpoint", noremap = true })
