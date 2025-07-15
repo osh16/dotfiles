@@ -7,7 +7,16 @@ if [ -z "$ZK_NOTEBOOK_DIR" ] || [ ! -d "$ZK_NOTEBOOK_DIR" ]; then
     exit 1
 fi
 
-cd "$ZK_NOTEBOOK_DIR"
+cd "$ZK_NOTEBOOK_DIR/work"
+git pull
+git add .
+if ! git diff --cached --quiet; then
+    git commit -m "zk auto-save $(date '+%Y-%m-%d %H:%M:%S')"
+    git push
+fi
+cd -
+
+cd "$ZK_NOTEBOOK_DIR/personal"
 git pull
 git add .
 if ! git diff --cached --quiet; then

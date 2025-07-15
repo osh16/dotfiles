@@ -62,6 +62,12 @@ return {
           end,
         })
 			end, { desc = "Zk Git Push" })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "markdown",
+        callback = function()
+          vim.keymap.set("n", "<CR>", vim.lsp.buf.definition, { buffer = true, desc = "Go to Definition (ZK)" })
+        end,
+      })
 		end,
 	},
 }

@@ -5,6 +5,9 @@ if [[ ! $(echo $XDG_CURRENT_DESKTOP | grep "GNOME") ]]; then
   exit 0
 fi
 
+dconf reset -f /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/
+
+# Add custom shortcuts
 add_gnome_shortcut.sh --keybinding='<Super>h' --command='alacritty -e htop' --name='htop'
 add_gnome_shortcut.sh --keybinding='<Super>Return' --command='alacritty' --name='terminal'
 add_gnome_shortcut.sh --keybinding='<Super>f' --command='nautilus' --name='nautilus'
@@ -12,7 +15,8 @@ add_gnome_shortcut.sh --keybinding='<Super>b' --command='chromium' --name='chrom
 add_gnome_shortcut.sh --keybinding='<Super><Shift>b' --command='brave' --name='brave'
 add_gnome_shortcut.sh --keybinding='<Control><Alt>equal' --command='alacritty -e bash -c "~/work/scripts/chromium_launcher.sh; sleep 0.0"' --name='chromium launcher'
 add_gnome_shortcut.sh --keybinding='<Control><Alt>minus' --command='alacritty -e bash -c "~/work/scripts/chromium_launcher.sh; sleep 0.0"' --name='chromium launcher alt'
-add_gnome_shortcut.sh --keybinding='<Super>n' --command='alacritty -e bash -c "cd "$HOME/vimwiki";zk edit --interactive' --name='zk'
+add_gnome_shortcut.sh --keybinding='<Super>n' --command='alacritty -e bash -c "cd "$HOME/notes/work";zk edit --interactive"' --name='zk work'
+add_gnome_shortcut.sh --keybinding='<Super>m' --command='alacritty -e bash -c "cd "$HOME/notes/personal";zk edit --interactive"' --name='zk personal'
 add_gnome_shortcut.sh --keybinding='<Super><Shift>h' --command='hamster' --name='hamster'
 
 # Enable workspaces 1-9
