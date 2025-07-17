@@ -49,7 +49,8 @@ alias pcpu="ps -eo pid,ppid,comm,%mem,%cpu --sort=-%cpu | head -n 15"
 alias pres="$HOME/.local/bin/show_resources_in_sessions.sh | less"
 alias sc="sudo sysctl -p"
 alias gop="$HOME/.local/bin/open_git_repo.sh > /dev/null 2>&1 &"
-alias zke="zk edit --interactive"
+alias zkw="zk --notebook-dir=$ZK_NOTEBOOK_DIR/work $@"
+alias zkp="zk --notebook-dir=$ZK_NOTEBOOK_DIR/personal $@"
 
 # Geggjað viðmót fyrir man pgaes
 function fman() {

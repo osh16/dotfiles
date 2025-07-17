@@ -35,3 +35,13 @@ vim.api.nvim_create_autocmd("VimEnter", {
     end
   end,
 })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+ pattern = "*.go",
+ callback = function()
+   local root = vim.fn.findfile("go.mod", ".;")
+   if root ~= "" then
+     vim.cmd("cd " .. vim.fn.fnamemodify(root, ":p:h"))
+   end
+ end,
+})
