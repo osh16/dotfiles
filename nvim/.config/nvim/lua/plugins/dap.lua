@@ -6,6 +6,7 @@ return {
       local ui = require("dapui")
       ui.setup()
       require("nvim-dap-virtual-text").setup()
+      require("dap-go").setup()
 
       local dotnet = require("configs.nvim-dap-dotnet")
 
@@ -33,22 +34,23 @@ return {
           end,
         },
       }
-      dap.adapters.go = {
-        type = "server",
-        port = "${port}",
-        executable = {
-          command = "dlv",
-          args = { "dap", "-l", "127.0.0.1:${port}" },
-        }
-      }
-      dap.configurations.go = {
-        {
-          type = "go",
-          name = "Debug",
-          request = "launch",
-          program = "${file}",
-        },
-      }
+      --dap.adapters.go = {
+      --  type = "server",
+      --  port = "${port}",
+      --  executable = {
+      --    command = "dlv",
+      --    args = { "dap", "-l", "127.0.0.1:${port}" },
+      --  }
+      --}
+      --dap.configurations.go = {
+      --  {
+      --    type = "go",
+      --    name = "Debug",
+      --    request = "launch",
+      --    program = "${file}",
+      --    console = "integratedTerminal"
+      --  },
+      --}
       vim.fn.sign_define('DapBreakpoint', {text='🔴', texthl='', linehl='', numhl=''})
       vim.fn.sign_define('DapStopped', {text='➡️', texthl='', linehl='', numhl=''})
       vim.keymap.set("n", "<leader>b", "<Cmd>lua require('dap').toggle_breakpoint()<CR>", { desc = "DAP Toggle Breakpoint", noremap = true })
@@ -72,4 +74,5 @@ return {
   { "rcarriga/nvim-dap-ui" },
   { "theHamsta/nvim-dap-virtual-text" },
   { "nvim-neotest/nvim-nio" },
+  { "leoluz/nvim-dap-go" }
 }
