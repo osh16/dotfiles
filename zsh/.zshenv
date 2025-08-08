@@ -34,3 +34,4 @@ if [[ ":$FPATH:" != *":/home/oskar/.zsh/completions:"* ]]; then export FPATH="/h
 
 # sources
 . "/$HOME/.deno/env"
+source "/$HOME/.env"
