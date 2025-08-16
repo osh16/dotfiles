@@ -117,3 +117,12 @@ _az_python_argcomplete() {
 }
 complete -o nospace -o default -o bashdefault -F _az_python_argcomplete "az"
 
+# Docker completion
+if [ -f /usr/share/zsh/site-functions/_docker ]; then
+  fpath=(/usr/share/zsh/site-functions $fpath)
+  autoload -Uz compinit
+  compinit
+elif command -v docker &>/dev/null; then
+  source <(docker completion zsh)
+fi
+
