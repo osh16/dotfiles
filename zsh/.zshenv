@@ -33,5 +33,10 @@ fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 if [[ ":$FPATH:" != *":/home/oskar/.zsh/completions:"* ]]; then export FPATH="/home/oskar/.zsh/completions:$FPATH"; fi
 
 # sources
-. "/$HOME/.deno/env"
-source "/$HOME/.env"
+if [[ -s "$HOME/.deno/env" ]]; then
+  . "/$HOME/.deno/env"
+fi
+
+if [[ -s "$HOME/.env" ]]; then
+  source "$HOME/.env"
+fi
