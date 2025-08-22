@@ -52,6 +52,7 @@ alias gop="$HOME/.local/bin/open_git_repo.sh > /dev/null 2>&1 &"
 alias zkw="zk --notebook-dir=$ZK_NOTEBOOK_DIR/work $@"
 alias zkp="zk --notebook-dir=$ZK_NOTEBOOK_DIR/personal $@"
 alias tor="torrra prowlarr --url $PROWLARR_URL --api-key $PROWLARR_API_KEY"
+alias dcr="docker compose down; docker compose up --build"
 
 # Geggjað viðmót fyrir man pgaes
 function fman() {

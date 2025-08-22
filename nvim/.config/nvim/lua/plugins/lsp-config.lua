@@ -11,19 +11,29 @@ return {
 		lazy = false,
 		opts = {
 			auto_install = true,
-      handlers = {},
+			automatic_enable = {
+				exclude = {
+					"powershell_es",
+				},
+			},
 		},
 	},
 	{
 		"neovim/nvim-lspconfig",
 		lazy = false,
 		config = function()
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			local lspconfig = require("lspconfig")
-			lspconfig.powershell_es.setup({
-				capabilities = capabilities,
-				bundle_path = "~/.local/share/nvim/mason/packages/powershell-editor-services/",
-				settings = { powershell = { codeFormatting = { Preset = "OTBS" } } },
+			require("lspconfig").powershell_es.setup({
+				bundle_path = vim.fn.expand("~/.local/share/nvim/mason/packages/powershell-editor-services/"),
+				settings = {
+					powershell = {
+						codeFormatting = {
+							Preset = "OTBS",
+							UseCorrectCasing = true,
+							AutoCorrectAliases = true,
+						},
+					},
+				},
+				capabilities = require("cmp_nvim_lsp").default_capabilities(),
 			})
 			vim.keymap.set("n", "<leader>dl", vim.diagnostic.open_float, { desc = "diagnostic line" })
 			vim.keymap.set("n", "<leader>dc", function()
