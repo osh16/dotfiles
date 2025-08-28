@@ -55,6 +55,7 @@ vim.keymap.set("n", ";", ":")
 vim.keymap.set("n", "æ", ":")
 vim.keymap.set("n", "Æ", ":")
 vim.keymap.set("n", "þ", "/")
+vim.keymap.set("i", "<C-ð>", "<Esc>")
 
 -- Tabs
 vim.keymap.set("n", "<leader>tn", ":tabnew<cr>", { desc = "new tab" })
