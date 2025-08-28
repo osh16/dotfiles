@@ -17,8 +17,8 @@ add_gnome_shortcut.sh --keybinding='<Control><Alt>equal' --command='alacritty -e
 add_gnome_shortcut.sh --keybinding='<Control><Alt>minus' --command='alacritty -e bash -c "~/work/scripts/chromium_launcher.sh; sleep 0.0"' --name='chromium launcher alt'
 add_gnome_shortcut.sh --keybinding='<Super>n' --command='alacritty -e bash -c "cd "$HOME/notes/work";zk edit --interactive"' --name='zk work'
 add_gnome_shortcut.sh --keybinding='<Super>m' --command='alacritty -e bash -c "cd "$HOME/notes/personal";zk edit --interactive"' --name='zk personal'
-add_gnome_shortcut.sh --keybinding='<Super>d' --command='alacritty -e bash -c "cd \"$HOME/notes/work\"; zk daily --notebook-dir $HOME/notes/work"' --name='zk daily'
-add_gnome_shortcut.sh --keybinding='<Super>Shift>d' --command='alacritty -e bash -c "cd \"$HOME/notes/personal\"; zk daily"' --name='zk daily personal'
+add_gnome_shortcut.sh --keybinding='<Super>p' --command='alacritty -e bash -c "cd \"$HOME/notes/work\"; zk daily --notebook-dir $HOME/notes/work"' --name='zk daily'
+add_gnome_shortcut.sh --keybinding='<Super><Shift>p' --command='alacritty -e bash -c "cd \"$HOME/notes/personal\"; zk daily --notebook-dir $HOME/notes/personal"' --name='zk daily personal'
 add_gnome_shortcut.sh --keybinding='<Super><Shift>h' --command='hamster' --name='hamster'
 
 # Enable workspaces 1-9
