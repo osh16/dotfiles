@@ -22,7 +22,7 @@ return {
 		"neovim/nvim-lspconfig",
 		lazy = false,
 		config = function()
-			require("lspconfig").powershell_es.setup({
+			vim.lsp.config("powershell_es", {
 				bundle_path = vim.fn.expand("~/.local/share/nvim/mason/packages/powershell-editor-services/"),
 				settings = {
 					powershell = {
