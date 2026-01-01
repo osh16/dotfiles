@@ -1,0 +1,12 @@
+directory: ~/music
+library: ~/.config/beets/library.db
+
+import:
+  copy: yes
+  write: yes
+  move: yes
+  autotag: yes
+  remove_source: yes
+
+paths:
+  default: "$albumartist/$album/$track - $title"
