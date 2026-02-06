@@ -25,7 +25,6 @@ add_gnome_shortcut.sh --keybinding='<Super><Shift>h' --command='hamster' --name=
 gsettings set "org.gnome.mutter" "dynamic-workspaces" false
 gsettings set "org.gnome.desktop.wm.preferences" "num-workspaces" 9
 
-
 # Add workspace shortcuts
 for i in {1..9}; do
   gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-$i" "['<Super>$i']" 
@@ -48,6 +47,12 @@ fi
 
 # Disable ubuntu dock
 gnome-extensions disable ubuntu-dock@ubuntu.com
+
+# Input sources
+gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier', 'grp:win_space_toggle', 'compose:ralt']"
+gsettings set org.gnome.desktop.input-sources mru-sources "[('xkb', 'is'), ('xkb', 'us')]"
+gsettings set org.gnome.desktop.input-sources per-window "false"
+gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('xkb', 'is')]"
 
 # If macbook
 # gsettings set org.gnome.desktop.input-sources xkb-options "['altwin:swap_alt_win']"
