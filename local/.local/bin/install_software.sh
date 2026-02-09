@@ -55,3 +55,13 @@ if [[ ! -f $(which zk) ]]; then
   cd -
   rm -rf zk
 fi
+
+# harpoon
+if [[ ! -f $(which harpoon) ]]; then
+  git clone https://github.com/Chaitanyabsprip/tmux-harpoon.git
+  cd tmux-harpoon
+  make install
+  sudo mv harpoon /usr/local/bin
+  cd -
+  rm -rf tmux-harpoon
+fi
