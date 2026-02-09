@@ -1,5 +1,5 @@
 autoload -U colors && colors	# Load colors
-PS1='[%{$fg[yellow]%}%n%{$reset_color%}] %{$fg[cyan]%}%~%{$reset_color%}$([[ -n $(git rev-parse --show-toplevel 2>/dev/null) ]] && echo " (%{$fg[green]%}$(git rev-parse --abbrev-ref HEAD 2>/dev/null)%{$reset_color%})") $ '
+PS1='%B[%{$fg[yellow]%}%n@%{$fg[yellow]%}%M %{$reset_color%}%~%B]%{$reset_color%}$([[ -n $(git rev-parse --show-toplevel 2>/dev/null) ]] && echo " (%{$fg[cyan]%}$(git rev-parse --abbrev-ref HEAD 2>/dev/null)%{$reset_color%})")$ %b '
 
 # Start the tmux session if not alraedy in the tmux session
 if [[ ! -n $TMUX  ]]; then
