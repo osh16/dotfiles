@@ -1,4 +1,5 @@
 autoload -U colors && colors	# Load colors
+setopt PROMPT_SUBST
 PS1='%B[%{$fg[yellow]%}%n@%{$fg[yellow]%}%M %{$reset_color%}%~%B]%{$reset_color%}$([[ -n $(git rev-parse --show-toplevel 2>/dev/null) ]] && echo " (%{$fg[cyan]%}$(git rev-parse --abbrev-ref HEAD 2>/dev/null)%{$reset_color%})")$ %b '
 
 # Start the tmux session if not alraedy in the tmux session
