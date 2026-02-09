@@ -22,10 +22,6 @@ if [[ -z "$session_ids" ]]; then
   exit 0
 fi
 
-# Select from following choices
-#   - Attach existing session
-#   - Create new session
-#   - Start without tmux
 create_new_session="Create new session"
 choices="${create_new_session}:\n$session_ids:"
 choice="$(echo -e "$choices" | fzf --no-multi --preview '' --bind 'ctrl-d:execute(tmux kill-session -t $(echo {} | cut -d: -f1))+reload(echo -e "Create new session:\n$(tmux list-sessions 2>/dev/null)")' | cut -d: -f1)"
