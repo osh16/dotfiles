@@ -45,6 +45,8 @@ if [[ $(gsettings list-recursively "org.gnome.shell.extensions.dash-to-dock") ]]
   done
 fi
 
+gsettings set "org.gnome.shell.extensions.dash-to-dock" "isolate-workspaces" "false"
+
 # Disable ubuntu dock
 gnome-extensions disable ubuntu-dock@ubuntu.com
 
