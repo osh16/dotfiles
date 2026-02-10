@@ -1,13 +1,11 @@
 autoload -U colors && colors	# Load colors
-PS1="%B[%{$fg[yellow]%}%n@%{$fg[yellow]%}%M %{$reset_color%}%~%B]%{$reset_color%}$%b "
-
+setopt PROMPT_SUBST
+PS1='%B[%{$fg[yellow]%}%n@%{$fg[yellow]%}%M %{$reset_color%}%~%B]%{$reset_color%}$([[ -n $(git rev-parse --show-toplevel 2>/dev/null) ]] && echo " (%{$fg[cyan]%}$(git rev-parse --abbrev-ref HEAD 2>/dev/null)%{$reset_color%})")$ %b '
 
 # Start the tmux session if not alraedy in the tmux session
 if [[ ! -n $TMUX  ]]; then
   "$HOME/.local/bin/tmux-launcher.sh"
 fi
-
-
 
 setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
@@ -33,7 +31,6 @@ autoload -Uz compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 zstyle ':completion:*' menu select matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 zmodload zsh/complist
-compinit
 _comp_options+=(globdots)		# Include hidden files.
 
 # vi mode
@@ -121,7 +118,6 @@ complete -o nospace -o default -o bashdefault -F _az_python_argcomplete "az"
 if [ -f /usr/share/zsh/site-functions/_docker ]; then
   fpath=(/usr/share/zsh/site-functions $fpath)
   autoload -Uz compinit
-  compinit
 elif command -v docker &>/dev/null; then
   source <(docker completion zsh)
 fi

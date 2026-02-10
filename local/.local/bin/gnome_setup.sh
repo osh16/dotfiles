@@ -44,3 +44,17 @@ if [[ $(gsettings list-recursively "org.gnome.shell.extensions.dash-to-dock") ]]
     gsettings set "org.gnome.shell.keybindings" "switch-to-application-$i" "['Disabled']"
   done
 fi
+
+gsettings set "org.gnome.shell.extensions.dash-to-dock" "isolate-workspaces" "false"
+
+# Disable ubuntu dock
+gnome-extensions disable ubuntu-dock@ubuntu.com
+
+# Input sources
+gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier', 'grp:win_space_toggle', 'compose:ralt']"
+gsettings set org.gnome.desktop.input-sources mru-sources "[('xkb', 'is'), ('xkb', 'us')]"
+gsettings set org.gnome.desktop.input-sources per-window "false"
+gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('xkb', 'is')]"
+
+# If macbook
+# gsettings set org.gnome.desktop.input-sources xkb-options "['altwin:swap_alt_win']"
