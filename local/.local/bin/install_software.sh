@@ -65,3 +65,8 @@ if [[ ! -f $(which harpoon) ]]; then
   cd -
   rm -rf tmux-harpoon
 fi
+
+if [[ -d "$HOME/.config/alacritty/themes/themes" ]]; then
+  mkdir -p ~/.config/alacritty/themes
+  git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+fi
