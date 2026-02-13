@@ -13,7 +13,7 @@ session_ids="$(tmux list-sessions 2>/dev/null)"
 
 # Create new session if no sessions exist
 if [[ -z "$session_ids" ]]; then
-  selected=$(find ~/code ~/work ~/w_code/ ~/ /home/ ~/work/modern_workpoint ~/.local/share/nvim/vimwiki -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf)
+  selected=$(find ~/code ~/work ~/w_code/ ~/ /home/ ~/work/modern_workpoint ~/work/modern_innrivefur ~/.local/share/nvim/vimwiki -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf)
   if [[ -z $selected ]]; then
     exit 0
   fi
@@ -31,7 +31,7 @@ if echo -e "$session_ids" | grep -q "^$choice"; then
   tmux_attach_or_switch_client "$choice"
 elif [[ "$choice" = "${create_new_session}" ]]; then
   # Create new session from directory
-  selected=$(find ~/code ~/work ~/w_code/ ~/ /home/ ~/work/modern_workpoint ~/.local/share/nvim/vimwiki -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf)
+  selected=$(find ~/code ~/work ~/w_code/ ~/ /home/ ~/work/modern_workpoint ~/work/modern_innrivefur ~/.local/share/nvim/vimwiki -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf)
   if [[ -z $selected ]]; then
     exit 0
   fi
