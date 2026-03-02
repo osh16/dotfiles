@@ -70,3 +70,8 @@ if [[ -d "$HOME/.config/alacritty/themes/themes" ]]; then
   mkdir -p ~/.config/alacritty/themes
   git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
 fi
+
+if [[ ! -f $(which yt-dlp) ]]; then
+  curl -Lo yt-dlp "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp"
+  sudo mv yt-dlp /usr/local/bin
+fi
