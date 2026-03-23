@@ -121,7 +121,3 @@ if [ -f /usr/share/zsh/site-functions/_docker ]; then
 elif command -v docker &>/dev/null; then
   source <(docker completion zsh)
 fi
-
-
-# opencode
-export PATH=/home/oskar/.opencode/bin:$PATH

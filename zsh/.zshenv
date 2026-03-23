@@ -28,6 +28,7 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export PATH="$HOME/.dotnet/tools:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/work/scripts:$PATH"
+export PATH=/home/oskar/.opencode/bin:$PATH
 
 # fpath
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
