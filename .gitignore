@@ -1,2 +1,5 @@
 .netcoredbg_hist
 torrra
+beets/.config/beets/library.db
+beets/.config/beets/state.pickle
+
