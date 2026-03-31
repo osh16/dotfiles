@@ -2,9 +2,9 @@ autoload -U colors && colors	# Load colors
 setopt PROMPT_SUBST
 PS1='%B[%{$fg[yellow]%}%n@%{$fg[yellow]%}%M %{$reset_color%}%~%B]%{$reset_color%}$([[ -n $(git rev-parse --show-toplevel 2>/dev/null) ]] && echo " (%{$fg[cyan]%}$(git rev-parse --abbrev-ref HEAD 2>/dev/null)%{$reset_color%})")$ %b '
 
-# Start the tmux session if not alraedy in the tmux session
-if [[ ! -n $TMUX  ]]; then
-  "$HOME/.local/bin/tmux-launcher.sh"
+# Start the tmux session if not already in tmux (run in background)
+if [[ ! -n $TMUX ]]; then
+  "$HOME/.local/bin/tmux-launcher.sh" &
 fi
 
 setopt autocd		# Automatically cd into typed directory.
@@ -26,8 +26,13 @@ setopt HIST_SAVE_NO_DUPS
 
 source ~/.zsh_aliases
 
-# Basic auto/tab complete:
-autoload -Uz compinit && compinit
+# Basic auto/tab complete (with caching for speed):
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR}/.zcompdump(#qNmh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 autoload -U +X bashcompinit && bashcompinit
 zstyle ':completion:*' menu select matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 zmodload zsh/complist
@@ -61,11 +66,17 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
-# fzf completion
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+# fzf completion (lazy-loaded)
+fzf-history-widget-lazy() {
+  if [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
+    source /usr/share/doc/fzf/examples/key-bindings.zsh
+    source /usr/share/doc/fzf/examples/completion.zsh
+  fi
+  zle fzf-history-widget
+}
+zle -N fzf-history-widget-lazy
+bindkey '^R' fzf-history-widget-lazy
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs'
-bindkey '^R' fzf-history-widget
 
 # fman bindað á ctrl+f, geggjað viðmót fyrir man pgaes
 fman-launch-widget() {
@@ -74,6 +85,19 @@ fman-launch-widget() {
 }
 zle -N fman-launch-widget
 bindkey '^F' fman-launch-widget
+
+# Lazy-load NVM - source it once on first command
+_load_nvm_once() {
+  if [[ -s "$NVM_DIR/nvm.sh" ]]; then
+    source "$NVM_DIR/nvm.sh"
+    [[ -s "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"
+  fi
+  # Remove the precmd hook after loading
+  precmd_functions=("${precmd_functions[@]/_load_nvm_once}")
+}
+
+# Add the hook to load NVM before the first prompt
+precmd_functions+=(_load_nvm_once)
 
 # Bætum við .NET completion
 function _dotnet_zsh_complete() {
@@ -114,10 +138,19 @@ _az_python_argcomplete() {
 }
 complete -o nospace -o default -o bashdefault -F _az_python_argcomplete "az"
 
-# Docker completion
-if [ -f /usr/share/zsh/site-functions/_docker ]; then
-  fpath=(/usr/share/zsh/site-functions $fpath)
-  autoload -Uz compinit
-elif command -v docker &>/dev/null; then
-  source <(docker completion zsh)
-fi
+# Docker completion (lazy-loaded)
+_load_docker_completion() {
+  if [ -f /usr/share/zsh/site-functions/_docker ]; then
+    fpath=(/usr/share/zsh/site-functions $fpath)
+    autoload -Uz compinit
+  elif command -v docker &>/dev/null; then
+    source <(docker completion zsh)
+  fi
+  unset -f _load_docker_completion
+}
+
+# Load docker completion when docker command is first used
+docker() {
+  _load_docker_completion
+  command docker "$@"
+}
