@@ -8,7 +8,6 @@ done; unset command
 
 alias cp="cp -iv"
 alias mv="mv -iv"
-alias rm="rm -vI"
 alias bc="bc -ql"
 alias rsync="rsync -vrPlu"
 alias mkd="mkdir -pv"

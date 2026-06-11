@@ -150,7 +150,7 @@ _load_docker_completion() {
 }
 
 # Load docker completion when docker command is first used
-docker() {
-  _load_docker_completion
-  command docker "$@"
-}
+# docker() {
+#   _load_docker_completion
+#   command docker "$@"
+# }
