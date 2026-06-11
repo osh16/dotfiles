@@ -11,11 +11,6 @@ return {
 		lazy = false,
 		opts = {
 			auto_install = true,
-			automatic_enable = {
-				exclude = {
-					"powershell_es",
-				},
-			},
 		},
 	},
 	{
