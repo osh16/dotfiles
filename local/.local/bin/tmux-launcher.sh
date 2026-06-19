@@ -13,7 +13,7 @@ session_ids="$(tmux list-sessions 2>/dev/null)"
 
 # Create new session if no sessions exist
 if [[ -z "$session_ids" ]]; then
-  selected=$(find ~/code ~/work ~/w_code/ ~/ /home/ ~/work/modern_workpoint ~/work/modern_innrivefur ~/.local/share/nvim/vimwiki -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf)
+  selected=$(find ~/code ~/work ~/w_code/ ~/ /home/ ~/work/modern_workpoint ~/work/drasl ~/work/modern_innrivefur ~/.local/share/nvim/vimwiki -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf)
   if [[ -z $selected ]]; then
     exit 0
   fi
