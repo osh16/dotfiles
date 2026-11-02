@@ -56,6 +56,7 @@ alias zkp="zk --notebook-dir=$ZK_NOTEBOOK_DIR/personal $@"
 alias tor="torrra prowlarr --url $PROWLARR_URL --api-key $PROWLARR_API_KEY"
 alias dcr="docker compose down; docker compose up --build"
 alias rn="$HOME/work/scripts/new_release_note.sh"
+alias knd='sudo lsof -t -a -i :3000 -c node | xargs -r sudo kill -9'
 
 # Geggjað viðmót fyrir man pgaes
 function fman() {
